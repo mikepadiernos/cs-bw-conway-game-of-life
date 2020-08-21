@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './assets/images/logo.svg';
+import React, {useState} from 'react';
+
 import './assets/css/App.css';
 
+import GlobalContext from "./contexts/GlobalContexts.js";
+
+import Header from "./components/Header/Header.js";
+import Main from "./components/Main/Main.js";
+import Controls from "./components/Controls/Controls.js";
+
 function App() {
+
+  const [grid, setGrid] = useState();
+  const [action, setAction] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalContext.Provider value={{grid, setGrid, action, setAction}}>
+        <Header />
+        <Controls />
+        <Main />
+      </GlobalContext.Provider>
+    </>
   );
 }
 

@@ -3,8 +3,8 @@ const	auto				= require('autoprefixer-stylus'),
 			gulp				= require('gulp'),
 			postcss			= require('gulp-postcss'),
 			stylus			= require('gulp-stylus'),
-			rupture			= require('rupture');
-
+			rupture			= require('rupture'),
+			typographic	= require('typographic');
 
 gulp.task('app', () => {
 
@@ -16,13 +16,15 @@ gulp.task('app', () => {
 		.pipe(stylus({
 			use: [
 				auto(),
+				typographic(),
 				rupture()
 			]
 		}))
 		.pipe(postcss(processors))
 		.pipe(gulp.dest('./assets/css'));
+
 });
 
 gulp.task('default', () => {
-	gulp.watch('**/*.styl',  gulp.series('app'));
+	gulp.watch('./assets/**/*.styl',  gulp.series('app'));
 });
