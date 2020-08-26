@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
 
-import GlobalContext from "../../contexts/GlobalContexts.js";
+import GlobalContext from "../../contexts/GlobalContext.js";
 
 import MainCell from "./MainCell.js";
 
@@ -13,7 +13,8 @@ function Main() {
 		<main
 			className="grid"
 			style={{
-				gridTemplateColumns: `repeat(${numCols}, 2%)`
+				gridTemplateColumns: `repeat(${numCols}, 1fr)`,
+				gridTemplateRows: `repeat(${numRows}, 1fr)`
 			}}
 			>
 				{grid.map((rows, i) =>

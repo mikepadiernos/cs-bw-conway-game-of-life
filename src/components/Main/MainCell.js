@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import produce from 'immer'
 
-import GlobalContext from "../../contexts/GlobalContexts.js";
+import GlobalContext from "../../contexts/GlobalContext.js";
 
 function MainCell({i, j}) {
 
@@ -10,7 +10,7 @@ function MainCell({i, j}) {
 	return (
 		<>
 			<div
-				className="grid"
+				className="cell"
 				onClick={() => {
 					const newGrid = produce(grid, gridCopy => {
 						gridCopy[i][j] = grid[i][j] ? 0 : 1;
@@ -18,10 +18,7 @@ function MainCell({i, j}) {
 					setGrid(newGrid);
 				}}
 				style={{
-					width: '100%',
-					height: '100%',
 					backgroundColor: grid[i][j] ? "orange" : undefined,
-					border: "solid 1px black"
 				}}
 			/>
 		</>

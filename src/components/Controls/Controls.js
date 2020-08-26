@@ -1,6 +1,6 @@
-import React, {useContext, useRef} from 'react';
+import React, { useContext, useRef } from 'react';
 
-import GlobalContext from "../../contexts/GlobalContexts.js";
+import GlobalContext from "../../contexts/GlobalContext.js";
 
 function Controls({i}) {
 
@@ -16,7 +16,7 @@ function Controls({i}) {
 						simulation();
 					}
 				}}>
-				<i/>
+				<i className={session ? "cil-media-stop" : "cil-media-play"} />
 				{session ? "stop" : "start"}
 			</button>
 			<button
@@ -24,14 +24,14 @@ function Controls({i}) {
 					const rows = [];
 					for (let i = 0; i < numRows; i++) {
 						rows.push(
-							Array.from(Array(numCols), () => (Math.random() > 0.15 ? 1 : 0))
+							Array.from(Array(numCols), () => (Math.random() > 0.85 ? 1 : 0))
 						);
 					}
 
 					setGrid(rows);
 				}}
 			>
-				<i/>
+				<i className="cil-casino"/>
 				random
 			</button>
 			<button
@@ -39,7 +39,7 @@ function Controls({i}) {
 					setGrid(gridEmpty());
 				}}
 			>
-				<i/>
+				<i className="cil-x-circle" />
 				clear
 			</button>
 		</div>
