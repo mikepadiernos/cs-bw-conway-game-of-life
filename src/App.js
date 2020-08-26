@@ -60,7 +60,7 @@ function App() {
       });
     });
 
-    setTimeout(simulation, 100);
+    setTimeout(simulation, 80);
   }, []);
 
   return (

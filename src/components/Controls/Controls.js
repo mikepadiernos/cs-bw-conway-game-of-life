@@ -15,7 +15,10 @@ function Controls({i}) {
 						ref.current = true;
 						simulation();
 					}
-				}}>
+				}}
+				className="button-action"
+				title="Start / Stop Simulation"
+			>
 				<i className={session ? "cil-media-stop" : "cil-media-play"} />
 				{session ? "stop" : "start"}
 			</button>
@@ -30,6 +33,8 @@ function Controls({i}) {
 
 					setGrid(rows);
 				}}
+				className="button-random"
+				title="Randomize Cells"
 			>
 				<i className="cil-casino"/>
 				random
@@ -38,6 +43,8 @@ function Controls({i}) {
 				onClick={() => {
 					setGrid(gridEmpty());
 				}}
+				className="button-clear"
+				title="Clear Cells"
 			>
 				<i className="cil-x-circle" />
 				clear
