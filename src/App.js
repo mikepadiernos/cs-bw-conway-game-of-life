@@ -1,29 +1,36 @@
 import React, {useCallback, useRef, useState} from 'react';
 import produce from "immer";
+import Modal from "react-modal"
 
 import './assets/css/App.css';
 
 import GlobalContext from "./contexts/GlobalContext.js";
+import DimensionContext from "./contexts/DimensionContext.js";
 
 import Header from "./components/Header/Header.js";
 import Main from "./components/Main/Main.js";
 import Controls from "./components/Controls/Controls.js";
+import About from "./components/About/About.js";
 
 import {GridOperations} from "./components/Grid/GridOperations";
 
-function App() {
+Modal.setAppElement('#root');
 
-  const numRows = 80;
-  const numCols = 120;
+function App() {
+  const [dimensions, setDimensions] = useState({
+    rows: 80,
+    cols: 120
+  })
 
   const gridEmpty = () => {
     const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
+    for (let i = 0; i < dimensions.rows; i++) {
+      rows.push(Array.from(Array(dimensions.cols), () => 0));
     }
     return rows;
   };
 
+  const [modal, setModal] = useState(false);
   const [session, setSession] = useState(false);
   const [grid, setGrid] = useState(() => {
     return gridEmpty()
@@ -39,13 +46,13 @@ function App() {
 
     setGrid((g) => {
       return produce(g, gridCopy => {
-        for (let i = 0; i < numRows; i++) {
-          for (let j = 0; j < numCols; j++) {
+        for (let i = 0; i < dimensions.rows; i++) {
+          for (let j = 0; j < dimensions.cols; j++) {
             let neighbors = 0;
             GridOperations.forEach(([x, y]) => {
               const newI = i + x;
               const newJ = j + y;
-              if (newI >= 0 && newI < numRows && newJ >= 0 && newJ < numCols) {
+              if (newI >= 0 && newI < dimensions.rows && newJ >= 0 && newJ < dimensions.cols) {
                 neighbors += g[newI][newJ];
               }
             });
@@ -65,10 +72,18 @@ function App() {
 
   return (
     <>
-      <GlobalContext.Provider value={{ref, simulation, numRows, numCols, grid, setGrid, gridEmpty, session, setSession}}>
-        <Header />
-        <Controls />
-        <Main />
+      <GlobalContext.Provider value={{ref, simulation, grid, setGrid, gridEmpty, session, setSession, modal, setModal}}>
+        <DimensionContext.Provider value={{dimensions, setDimensions}}>
+          <Header />
+          <Controls />
+          <Main />
+	        <Modal
+		        isOpen={modal}
+		        onRequestClose={() => setModal(false)}
+	        >
+		        <About />
+	        </Modal>
+        </DimensionContext.Provider>
       </GlobalContext.Provider>
     </>
   );

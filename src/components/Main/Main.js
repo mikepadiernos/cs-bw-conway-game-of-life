@@ -2,23 +2,26 @@ import React, {useContext} from 'react';
 
 
 import GlobalContext from "../../contexts/GlobalContext.js";
+import DimensionContext from "../../contexts/DimensionContext.js";
 
 import MainCell from "./MainCell.js";
 
+
 function Main() {
 
-	const {numRows, numCols, grid, setGrid, moving, setMoving} = useContext(GlobalContext)
+	const {grid} = useContext(GlobalContext)
+	const {dimensions} = useContext(DimensionContext)
 
 	return (
 		<main
 			className="grid"
 			style={{
-				gridTemplateColumns: `repeat(${numCols}, 1fr)`,
-				gridTemplateRows: `repeat(${numRows}, 1fr)`
+				gridTemplateColumns: `repeat(${dimensions.cols}, 1fr)`,
+				gridTemplateRows: `repeat(${dimensions.rows}, 1fr)`
 			}}
 			>
 				{grid.map((rows, i) =>
-					rows.map((col, j) => (
+					rows.map((cols, j) => (
 						<MainCell i={i} j={j} key={`${i}-${j}`}/>
 					))
 				)}
