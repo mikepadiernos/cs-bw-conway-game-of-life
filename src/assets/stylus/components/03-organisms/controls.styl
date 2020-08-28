@@ -1,0 +1,36 @@
+.controls
+	grid-column 1/2
+	grid-row 2/3
+	padding 1em 0 1em 1em
+	width 4em
+	button
+		display flex
+		justify-content flex-start
+		width 3.25em
+		padding 1em
+		margin-bottom 1em
+		overflow hidden
+		white-space nowrap
+		border-color lighten(gray, 50%)
+		&.action-play
+			background green
+			border-color darken(green, 25%)
+		&.action-stop
+			background red
+			border-color darken(red, 25%)
+		&.action-play,
+		&.action-stop
+			color white
+		i
+			display flex
+			align-items center
+			justify-content center
+			padding 0
+			height auto
+			width auto
+			margin-right 1em
+			&:before
+				display block
+				font-size 1em
+				height 1em
+				width 1em
