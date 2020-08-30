@@ -10,14 +10,14 @@ import MainCell from "./MainCell.js";
 function Main() {
 
 	const {grid} = useContext(GlobalContext)
-	const {dimensions} = useContext(DimensionContext)
+	const {numRows, numCols} = useContext(DimensionContext)
 
 	return (
 		<main
 			className="grid"
 			style={{
-				gridTemplateColumns: `repeat(${dimensions.cols}, 1fr)`,
-				gridTemplateRows: `repeat(${dimensions.rows}, 1fr)`
+				gridTemplateColumns: `repeat(${numCols}, 1fr)`,
+				gridTemplateRows: `repeat(${numRows}, 1fr)`
 			}}
 			>
 				{grid.map((rows, i) =>

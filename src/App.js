@@ -12,20 +12,25 @@ import Main from "./components/Main/Main.js";
 import Controls from "./components/Controls/Controls.js";
 import About from "./components/About/About.js";
 
+import DimensionsDefault from "./components/Dimensions/Dimensions.js";
+
 import {GridOperations} from "./components/Grid/GridOperations";
 
 Modal.setAppElement('#root');
 
 function App() {
-  const [dimensions, setDimensions] = useState({
-    rows: 80,
-    cols: 120
-  })
+  const [dimensions, setDimensions] = useState(DimensionsDefault)
+
+  let numRows = Number(dimensions.rows);
+  let numCols = Number(dimensions.cols);
+
+  console.log("numCols: ", numCols)
+  console.log("numRows: ", numRows)
 
   const gridEmpty = () => {
     const rows = [];
-    for (let i = 0; i < dimensions.rows; i++) {
-      rows.push(Array.from(Array(dimensions.cols), () => 0));
+    for (let i = 0; i < numRows; i++) {
+      rows.push(Array.from(Array(numCols), () => 0));
     }
     return rows;
   };
@@ -44,22 +49,22 @@ function App() {
       return;
     }
 
-    setGrid((g) => {
-      return produce(g, gridCopy => {
-        for (let i = 0; i < dimensions.rows; i++) {
-          for (let j = 0; j < dimensions.cols; j++) {
+    setGrid((grid) => {
+      return produce(grid, gridCopy => {
+        for (let i = 0; i < numRows; i++) {
+          for (let j = 0; j < numCols; j++) {
             let neighbors = 0;
             GridOperations.forEach(([x, y]) => {
               const newI = i + x;
               const newJ = j + y;
-              if (newI >= 0 && newI < dimensions.rows && newJ >= 0 && newJ < dimensions.cols) {
-                neighbors += g[newI][newJ];
+              if (newI >= 0 && newI < numRows && newJ >= 0 && newJ < numCols) {
+                neighbors += grid[newI][newJ];
               }
             });
 
             if (neighbors < 2 || neighbors > 3) {
               gridCopy[i][j] = 0;
-            } else if (g[i][j] === 0 && neighbors === 3) {
+            } else if (grid[i][j] === 0 && neighbors === 3) {
               gridCopy[i][j] = 1;
             }
           }
@@ -67,13 +72,13 @@ function App() {
       });
     });
 
-    setTimeout(simulation, 80);
+    setTimeout(simulation, 100);
   }, []);
 
   return (
     <>
       <GlobalContext.Provider value={{ref, simulation, grid, setGrid, gridEmpty, session, setSession, modal, setModal}}>
-        <DimensionContext.Provider value={{dimensions, setDimensions}}>
+        <DimensionContext.Provider value={{dimensions, setDimensions, numRows, numCols}}>
           <Header />
           <Controls />
           <Main />

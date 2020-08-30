@@ -3,7 +3,7 @@ import GlobalContext from "../../contexts/GlobalContext";
 
 function Header() {
 
-	const {modal, setModal} = useContext(GlobalContext)
+	const {setModal} = useContext(GlobalContext)
 
 	return (
 		<header className="App-header">
