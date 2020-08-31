@@ -66,6 +66,7 @@ function Controls() {
 						name="rows"
 						value={dimensions.rows}
 						onChange={handleChanges}
+						title="Default: 50 rows"
 					/>
 					</label>
 					<label className="info-columns">
@@ -75,6 +76,7 @@ function Controls() {
 							name="cols"
 							value={dimensions.cols}
 							onChange={handleChanges}
+							title="Default: 100 columns"
 						/>
 					</label>
 					<label className="info-speed">
@@ -84,6 +86,7 @@ function Controls() {
 							name="speed"
 							value={dimensions.speed}
 							onChange={handleChanges}
+							title="Default: 100 speed"
 						/>
 					</label>
 				</form>
