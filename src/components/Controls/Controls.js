@@ -1,21 +1,15 @@
 import React, {useContext} from 'react';
-import Select from 'react-select';
 
 import GlobalContext from "../../contexts/GlobalContext.js";
 import DimensionContext from "../../contexts/DimensionContext.js";
-
-import DimensionsSpeed from "../Dimensions/DimensionsSpeed.js";
 
 function Controls() {
 
 	const {ref, simulation, setGrid, gridEmpty, session, setSession} = useContext(GlobalContext)
 	const {dimensions, setDimensions} = useContext(DimensionContext)
 
-	console.log("dimensions: ", dimensions);
-
 	const handleChanges = event => {
 		setDimensions({...dimensions, [event.target.name]: Number(event.target.value)})
-		// console.log("value: ", event.target.value);
 	};
 
 	return (
@@ -24,7 +18,6 @@ function Controls() {
 				<button
 					onClick={() => {
 						setSession(!session);
-						console.log("session: ", session)
 						if (!session) {
 							ref.current = true;
 							simulation();
@@ -43,7 +36,6 @@ function Controls() {
 							rows.push(
 								Array.from(Array(dimensions.cols), () => (Math.random() > 0.75 ? 1 : 0))
 							);
-						// console.log("Rows: ", rows)
 						}
 
 						setGrid(rows);
@@ -93,12 +85,6 @@ function Controls() {
 							value={dimensions.speed}
 							onChange={handleChanges}
 						/>
-						{/*<Select*/}
-						{/*	name="speed"*/}
-						{/*	value={dimensions.speed}*/}
-						{/*	onChange={dimensions.speed}*/}
-						{/*	options={DimensionsSpeed}*/}
-						{/*/>*/}
 					</label>
 				</form>
 			</div>

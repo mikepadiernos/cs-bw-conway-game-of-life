@@ -53,8 +53,6 @@ function App() {
               const newJ = j + y;
               if (newI >= 0 && newI < dimensions.rows && newJ >= 0 && newJ < dimensions.cols) {
                 neighbors += grid[newI][newJ];
-                // console.log("newI: ", newI)
-                // console.log("newJ: ", newJ)
               }
             });
 
@@ -65,7 +63,6 @@ function App() {
             }
           }
         }
-        console.log("grid: ", gridCopy)
       });
 
     });
