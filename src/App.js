@@ -21,16 +21,10 @@ Modal.setAppElement('#root');
 function App() {
   const [dimensions, setDimensions] = useState(DimensionsDefault)
 
-  let numRows = Number(dimensions.rows);
-  let numCols = Number(dimensions.cols);
-
-  console.log("numCols: ", numCols)
-  console.log("numRows: ", numRows)
-
   const gridEmpty = () => {
     const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
+    for (let i = 0; i < dimensions.rows; i++) {
+      rows.push(Array.from(Array(dimensions.cols), () => 0));
     }
     return rows;
   };
@@ -51,14 +45,16 @@ function App() {
 
     setGrid((grid) => {
       return produce(grid, gridCopy => {
-        for (let i = 0; i < numRows; i++) {
-          for (let j = 0; j < numCols; j++) {
+        for (let i = 0; i < dimensions.rows; i++) {
+          for (let j = 0; j < dimensions.cols; j++) {
             let neighbors = 0;
             GridOperations.forEach(([x, y]) => {
               const newI = i + x;
               const newJ = j + y;
-              if (newI >= 0 && newI < numRows && newJ >= 0 && newJ < numCols) {
+              if (newI >= 0 && newI < dimensions.rows && newJ >= 0 && newJ < dimensions.cols) {
                 neighbors += grid[newI][newJ];
+                console.log("newI: ", newI)
+                console.log("newJ: ", newJ)
               }
             });
 
@@ -78,7 +74,7 @@ function App() {
   return (
     <>
       <GlobalContext.Provider value={{ref, simulation, grid, setGrid, gridEmpty, session, setSession, modal, setModal}}>
-        <DimensionContext.Provider value={{dimensions, setDimensions, numRows, numCols}}>
+        <DimensionContext.Provider value={{dimensions, setDimensions}}>
           <Header />
           <Controls />
           <Main />

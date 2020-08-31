@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 
 import GlobalContext from "../../contexts/GlobalContext.js";
 import DimensionContext from "../../contexts/DimensionContext.js";
@@ -6,10 +6,10 @@ import DimensionContext from "../../contexts/DimensionContext.js";
 function Controls() {
 
 	const {ref, simulation, setGrid, gridEmpty, session, setSession} = useContext(GlobalContext)
-	const {dimensions, setDimensions, numRows, numCols} = useContext(DimensionContext)
+	const {dimensions, setDimensions} = useContext(DimensionContext)
 
 	const handleChanges = event => {
-		setDimensions({...dimensions, [event.target.name]: event.target.value.replace(/[^\d]/,'')})
+		setDimensions({...dimensions, [event.target.name]: Number(event.target.value)})
 		console.log("value: ", event.target.value);
 		console.log("dimensions: ", dimensions);
 	};
@@ -38,9 +38,9 @@ function Controls() {
 				<button
 					onClick={() => {
 						const rows = [];
-						for (let i = 0; i < numRows; i++) {
+						for (let i = 0; i < dimensions.rows; i++) {
 							rows.push(
-								Array.from(Array(numCols), () => (Math.random() > 0.75 ? 1 : 0))
+								Array.from(Array(dimensions.cols), () => (Math.random() > 0.75 ? 1 : 0))
 							);
 						console.log("Rows: ", rows)
 						}
@@ -73,7 +73,7 @@ function Controls() {
 					<input
 						type="text"
 						name="rows"
-						value={numRows}
+						value={dimensions.rows}
 						onChange={handleChanges}
 					/>
 					</label>
@@ -82,7 +82,7 @@ function Controls() {
 						<input
 							type="text"
 							name="cols"
-							value={numCols}
+							value={dimensions.cols}
 							onChange={handleChanges}
 						/>
 					</label>

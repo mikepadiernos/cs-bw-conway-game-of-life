@@ -10,7 +10,7 @@ function MainCell({i, j}) {
 	return (
 		<>
 			<div
-				className="cell"
+				className={`cell${grid[i][j] ? " filled" : ""}`}
 				onClick={() => {
 					const newGrid = produce(grid, gridCopy => {
 						gridCopy[i][j] = grid[i][j] ? 0 : 1;

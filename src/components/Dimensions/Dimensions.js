@@ -1,6 +1,6 @@
 const DimensionsDefault = {
-	rows: "80",
-	cols: "120"
+	rows: 80,
+	cols: 120
 }
 
 export default DimensionsDefault;

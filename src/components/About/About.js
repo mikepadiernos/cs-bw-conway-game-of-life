@@ -21,20 +21,22 @@ function About() {
 					</p>
 					<p>
 						Conway chose his rules carefully, after considerable experimentation, to meet these criteria:
-						<ul>
-							<li>
-							There should be no explosive growth.
-							</li>
-							<li>
-							There should exist small initial patterns with chaotic, unpredictable outcomes.
-							</li>
-							<li>
-							There should be potential for von Neumann universal constructors.
-							</li>
-							<li>
-							The rules should be as simple as possible, whilst adhering to the above constraints.
-							</li>
-						</ul>
+					</p>
+					<ul>
+						<li>
+						There should be no explosive growth.
+						</li>
+						<li>
+						There should exist small initial patterns with chaotic, unpredictable outcomes.
+						</li>
+						<li>
+						There should be potential for von Neumann universal constructors.
+						</li>
+						<li>
+						The rules should be as simple as possible, whilst adhering to the above constraints.
+						</li>
+					</ul>
+						<p>
 						The game made its first public appearance in the October 1970 issue of Scientific American, in Martin Gardner's "Mathematical Games" column. Theoretically, the Game of Life has the power of a universal Turing machine: anything that can be computed algorithmically can be computed within the Game of Life.[5][6][7] Gardner wrote, "Because of Life's analogies with the rise, fall and alterations of a society of living organisms, it belongs to a growing class of what are called 'simulation games' (games that resemble real life processes)."
 					</p>
 					<p>
@@ -44,7 +46,7 @@ function About() {
 						The popularity of the Game of Life was helped by its coming into being at the same time as increasingly inexpensive computer access. The game could be run for hours on these machines, which would otherwise have remained unused at night. In this respect, it foreshadowed the later popularity of computer-generated fractals. For many, the Game of Life was simply a programming challenge: a fun way to use otherwise wasted CPU cycles. For some, however, the Game of Life had more philosophical connotations. It developed a cult following through the 1970s and beyond; current developments have gone so far as to create theoretic emulations of computer systems within the confines of a Game of Life board.
 					</p>
 					<span>
-						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Origins" target="_blank">Origins</a>]
+						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Origins" target="_blank" rel="noopener noreferrer">Origins</a>]
 					</span>
 				</div>
 				<div className="info-section info-rules">
@@ -53,24 +55,24 @@ function About() {
 					</h3>
 					<p>
 						The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, live or dead, (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
-						<ul>
-							<li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
-							<li>Any live cell with two or three live neighbours lives on to the next generation.</li>
-							<li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
-							<li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
-						</ul>
 					</p>
+					<ul>
+						<li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
+						<li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+						<li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+						<li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+					</ul>
 					<p>
 						These rules, which compare the behavior of the automaton to real life, can be condensed into the following:
-						<ul>
-							<li>Any live cell with two or three live neighbours survives.</li>
-							<li>Any dead cell with three live neighbours becomes a live cell.</li>
-							<li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
-							<li>The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick. Each generation is a pure function of the preceding one. The rules continue to be applied repeatedly to create further generations.</li>
-						</ul>
 					</p>
+					<ul>
+						<li>Any live cell with two or three live neighbours survives.</li>
+						<li>Any dead cell with three live neighbours becomes a live cell.</li>
+						<li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
+						<li>The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick. Each generation is a pure function of the preceding one. The rules continue to be applied repeatedly to create further generations.</li>
+					</ul>
 					<span>
-						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules" target="_blank">Rules</a>]
+						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules" target="_blank" rel="noopener noreferrer">Rules</a>]
 					</span>
 				</div>
 			</div>
