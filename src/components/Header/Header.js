@@ -12,9 +12,11 @@ function Header() {
 			</h1>
 			<div className="app-about">
 			<button
+				className="about-button"
 				onClick={() => {setModal(true)}}
+				title="Info for Conway's game of life"
 			>
-				<i className="cil-info-circle"/>
+				<i className="cil-bookmark"/>
 				about
 			</button>
 			</div>

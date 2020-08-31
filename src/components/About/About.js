@@ -8,8 +8,8 @@ function About() {
 					Conways' Game of life
 				</h2>
 			</header>
-			<div className="info-body">
-				<div className="info-section info-about">
+			<main className="info-body">
+				<section className="info-section info-about">
 					<h3>
 						About the game
 					</h3>
@@ -48,8 +48,8 @@ function About() {
 					<span>
 						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Origins" target="_blank" rel="noopener noreferrer">Origins</a>]
 					</span>
-				</div>
-				<div className="info-section info-rules">
+				</section>
+				<section className="info-section info-rules">
 					<h3>
 						Rules of the game
 					</h3>
@@ -74,8 +74,8 @@ function About() {
 					<span>
 						source: Wikipedia [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules" target="_blank" rel="noopener noreferrer">Rules</a>]
 					</span>
-				</div>
-			</div>
+				</section>
+			</main>
 		</div>
 	)}
 

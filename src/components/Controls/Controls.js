@@ -1,21 +1,22 @@
 import React, {useContext} from 'react';
+import Select from 'react-select';
 
 import GlobalContext from "../../contexts/GlobalContext.js";
 import DimensionContext from "../../contexts/DimensionContext.js";
+
+import DimensionsSpeed from "../Dimensions/DimensionsSpeed.js";
 
 function Controls() {
 
 	const {ref, simulation, setGrid, gridEmpty, session, setSession} = useContext(GlobalContext)
 	const {dimensions, setDimensions} = useContext(DimensionContext)
 
+	console.log("dimensions: ", dimensions);
+
 	const handleChanges = event => {
 		setDimensions({...dimensions, [event.target.name]: Number(event.target.value)})
-		console.log("value: ", event.target.value);
-		console.log("dimensions: ", dimensions);
+		// console.log("value: ", event.target.value);
 	};
-	const handleSubmit = event => {
-		event.preventDefault();
-	}
 
 	return (
 		<div className="controls">
@@ -42,7 +43,7 @@ function Controls() {
 							rows.push(
 								Array.from(Array(dimensions.cols), () => (Math.random() > 0.75 ? 1 : 0))
 							);
-						console.log("Rows: ", rows)
+						// console.log("Rows: ", rows)
 						}
 
 						setGrid(rows);
@@ -65,11 +66,9 @@ function Controls() {
 				</button>
 			</div>
 			<div className="controls-info">
-				<form
-					onSubmit={handleSubmit}
-				>
+				<form>
 					<label className="info-rows">
-					Rows:
+					Rows
 					<input
 						type="text"
 						name="rows"
@@ -78,13 +77,28 @@ function Controls() {
 					/>
 					</label>
 					<label className="info-columns">
-						Cols:
+						Cols
 						<input
 							type="text"
 							name="cols"
 							value={dimensions.cols}
 							onChange={handleChanges}
 						/>
+					</label>
+					<label className="info-speed">
+						Speed
+						<input
+							type="text"
+							name="speed"
+							value={dimensions.speed}
+							onChange={handleChanges}
+						/>
+						{/*<Select*/}
+						{/*	name="speed"*/}
+						{/*	value={dimensions.speed}*/}
+						{/*	onChange={dimensions.speed}*/}
+						{/*	options={DimensionsSpeed}*/}
+						{/*/>*/}
 					</label>
 				</form>
 			</div>

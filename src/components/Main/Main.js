@@ -11,7 +11,7 @@ function Main() {
 
 	const {grid} = useContext(GlobalContext)
 	const {dimensions} = useContext(DimensionContext)
-	console.log("dimensions: ", dimensions)
+	// console.log("dimensions: ", dimensions)
 
 	return (
 		<main
