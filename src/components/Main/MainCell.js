@@ -17,12 +17,12 @@ function MainCell({i, j}) {
 					});
 					setGrid(newGrid);
 				}}
-				style={{
-					backgroundColor: grid[i][j] ? "orange" : undefined,
-					// boxShadow: "0 0 10px rgba(0,0,0,0.15), 0 100px 80px rgba(0,0,0,0.075), 0 40px 100px -50px rgba(170,170,170,0.5)",
-					borderRadius: "25%",
-					border: "1px solid #919191"
-				}}
+				// style={{
+				// 	backgroundColor: grid[i][j] ? "orange" : undefined,
+				// 	// boxShadow: "0 0 10px rgba(0,0,0,0.15), 0 100px 80px rgba(0,0,0,0.075), 0 40px 100px -50px rgba(170,170,170,0.5)",
+				// 	borderRadius: "25%",
+				// 	border: "1px solid #919191"
+				// }}
 			/>
 		</>
 	)
