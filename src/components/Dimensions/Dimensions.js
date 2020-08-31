@@ -1,6 +1,6 @@
 const DimensionsDefault = {
-	rows: 80,
-	cols: 120,
+	rows: 50,
+	cols: 100,
 	speed: 100
 }
 
