@@ -12,15 +12,14 @@ import Main from "./components/Main/Main.js";
 import Controls from "./components/Controls/Controls.js";
 import About from "./components/About/About.js";
 
+import DimensionsDefault from "./components/Dimensions/Dimensions.js";
+
 import {GridOperations} from "./components/Grid/GridOperations";
 
 Modal.setAppElement('#root');
 
 function App() {
-  const [dimensions, setDimensions] = useState({
-    rows: 80,
-    cols: 120
-  })
+  const [dimensions, setDimensions] = useState(DimensionsDefault)
 
   const gridEmpty = () => {
     const rows = [];
@@ -44,8 +43,8 @@ function App() {
       return;
     }
 
-    setGrid((g) => {
-      return produce(g, gridCopy => {
+    setGrid((grid) => {
+      return produce(grid, gridCopy => {
         for (let i = 0; i < dimensions.rows; i++) {
           for (let j = 0; j < dimensions.cols; j++) {
             let neighbors = 0;
@@ -53,13 +52,15 @@ function App() {
               const newI = i + x;
               const newJ = j + y;
               if (newI >= 0 && newI < dimensions.rows && newJ >= 0 && newJ < dimensions.cols) {
-                neighbors += g[newI][newJ];
+                neighbors += grid[newI][newJ];
+                console.log("newI: ", newI)
+                console.log("newJ: ", newJ)
               }
             });
 
             if (neighbors < 2 || neighbors > 3) {
               gridCopy[i][j] = 0;
-            } else if (g[i][j] === 0 && neighbors === 3) {
+            } else if (grid[i][j] === 0 && neighbors === 3) {
               gridCopy[i][j] = 1;
             }
           }
@@ -67,7 +68,7 @@ function App() {
       });
     });
 
-    setTimeout(simulation, 80);
+    setTimeout(simulation, 100);
   }, []);
 
   return (

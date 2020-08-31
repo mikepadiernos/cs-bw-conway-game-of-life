@@ -1,16 +1,21 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 
 import GlobalContext from "../../contexts/GlobalContext.js";
 import DimensionContext from "../../contexts/DimensionContext.js";
 
-function Controls({i}) {
+function Controls() {
 
 	const {ref, simulation, setGrid, gridEmpty, session, setSession} = useContext(GlobalContext)
 	const {dimensions, setDimensions} = useContext(DimensionContext)
 
-	const handleChanges = event => setDimensions({...dimensions, [event.target.name]: event.target.value});
-
-	console.log("changes: ", handleChanges)
+	const handleChanges = event => {
+		setDimensions({...dimensions, [event.target.name]: Number(event.target.value)})
+		console.log("value: ", event.target.value);
+		console.log("dimensions: ", dimensions);
+	};
+	const handleSubmit = event => {
+		event.preventDefault();
+	}
 
 	return (
 		<div className="controls">
@@ -18,6 +23,7 @@ function Controls({i}) {
 				<button
 					onClick={() => {
 						setSession(!session);
+						console.log("session: ", session)
 						if (!session) {
 							ref.current = true;
 							simulation();
@@ -36,6 +42,7 @@ function Controls({i}) {
 							rows.push(
 								Array.from(Array(dimensions.cols), () => (Math.random() > 0.75 ? 1 : 0))
 							);
+						console.log("Rows: ", rows)
 						}
 
 						setGrid(rows);
@@ -58,31 +65,27 @@ function Controls({i}) {
 				</button>
 			</div>
 			<div className="controls-info">
-				<form action="">
-					<div className="info-rows">
-						<div>
-							<label>
-							Rows:
-							<input
-								type="text"
-								value={dimensions.rows}
-								onChange={handleChanges}
-							/>
-							</label>
-						</div>
-					</div>
-					<div className="info-columns">
-						<div>
-							<label>
-								Cols:
-							<input
-								type="text"
-								value={dimensions.cols}
-								onChange={handleChanges}
-							/>
-							</label>
-						</div>
-					</div>
+				<form
+					onSubmit={handleSubmit}
+				>
+					<label className="info-rows">
+					Rows:
+					<input
+						type="text"
+						name="rows"
+						value={dimensions.rows}
+						onChange={handleChanges}
+					/>
+					</label>
+					<label className="info-columns">
+						Cols:
+						<input
+							type="text"
+							name="cols"
+							value={dimensions.cols}
+							onChange={handleChanges}
+						/>
+					</label>
 				</form>
 			</div>
 
